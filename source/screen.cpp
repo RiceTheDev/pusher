@@ -23,9 +23,12 @@ void screen_gen_palette(void)
             uint8_t g = ((i / 6) % 6) * 0x33;
             uint8_t b = (i % 6) * 0x33;
             
-            palette[i] = (SDL_Color){ r, g, b, 255 };
+            SDL_Color c = { r, g, b, 255 };
+
+            palette[i] = c;
         } else {
-            palette[i] = (SDL_Color){ 0, 0, 0, 255 };
+            SDL_Color c = { 0, 0, 0, 255 };
+            palette[i] = c;
         }
     }
 }
