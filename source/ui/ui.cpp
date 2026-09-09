@@ -63,7 +63,7 @@ void ui_create_main_menu_bar(void) {
     if (ImGui::BeginMainMenuBar()) {
         if (ImGui::BeginMenu("File ")) {
             if (ImGui::MenuItem("Load ROM")) {
-                nfdu8char_t *file_path;
+                nfdu8char_t *file_path = NULL;
                 nfdresult_t result = NFD_OpenDialogU8(&file_path, NULL, 0, NULL);
                 if (result == NFD_OKAY) {
                     printf("selected rom: %s\n", file_path);
@@ -71,8 +71,10 @@ void ui_create_main_menu_bar(void) {
                         pc = ((uint32_t)memory[2] << 16) | ((uint32_t)memory[3] << 8) | memory[4];
                         running = 1;
                     }
+                    NFD_FreePathU8(file_path);
+                } else if (result == NFD_ERROR) {
+                    printf("failed to open file dialog: %s\n", NFD_GetError());
                 }
-                NFD_FreePathU8(file_path);
             }
 
             if (ImGui::MenuItem("Quit")) {
