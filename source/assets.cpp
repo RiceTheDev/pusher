@@ -1,4 +1,6 @@
-const char* DEFAULT_LAYOUT_INI =
+#include "assets.h"
+
+extern const char* const DEFAULT_LAYOUT_INI =
     "[Window][Emulator]\n"
     "Pos=35,52\n"
     "Size=512,512\n"

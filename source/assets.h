@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-extern const char* DEFAULT_LAYOUT_INI;
+extern const char* const DEFAULT_LAYOUT_INI;
 
 #ifdef __cplusplus
 }
